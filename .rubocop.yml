@@ -43,8 +43,6 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Lint/RaiseException:
   Enabled: false
-Lint/DuplicateMethods:
-  Enabled: false
 Lint/Debugger:
   Enabled: false
 Lint/StructNewOverride:
