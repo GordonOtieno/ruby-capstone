@@ -6,10 +6,6 @@ def main_menu
   # catalogs of things to do
   puts 'welcome to my App'
   puts '1. Add book'
-  puts '2. Add label'
-  puts '3. List books'
-  puts '4. List labels'
-  puts '5. List books by label'
   puts '6. Exit'
   puts 'Choose an option: '
 end
