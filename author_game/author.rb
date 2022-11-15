@@ -1,7 +1,9 @@
 require 'securerandom'
-require_relative 'game'
 
 class Author
+  attr_accessor :first_name, :last_name
+  attr_reader :id, :items
+
   def initialize(first_name, last_name)
     @id = SecureRandom.uuid
     @first_name = first_name
@@ -9,7 +11,8 @@ class Author
     @items = []
   end
 
-  def add_item(game)
-    @items << game.add_author(self)
+  def add_item(item)
+    @items.push(item) unless @items.include?(item)
+    item.author = self
   end
 end

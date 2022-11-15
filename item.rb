@@ -41,9 +41,3 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 end
-
-item = Item.new(2000)
-
-item.add_author = 'John Doe'
-
-p item
