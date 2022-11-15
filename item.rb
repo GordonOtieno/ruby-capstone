@@ -4,11 +4,10 @@ class Item
 
   def initialize(publish_date)
     @archived = false
-    @author = nil
-    @source = nil
-    @label = nil
-    @genre = nil
-    @items = []
+    @author = author
+    @source = source
+    @label = label
+    @genre = genre
     @publish_date = publish_date
   end
 
@@ -41,9 +40,3 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 end
-
-item = Item.new(2000)
-
-item.add_author = 'John Doe'
-
-p item
