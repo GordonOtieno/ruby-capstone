@@ -1,23 +1,32 @@
 require_relative './book/book'
 require_relative './book/label'
-require_relative './author_game/author'
+require_relative './game/author'
+require_relative './game/game'
+require_relative './game/game_module'
+require_relative './book/book_module'
 require 'json/add/struct'
 require 'json'
 
 ItemStruct = Struct.new(:item)
+GameStruct = Struct.new(:game)
 
 class App
   def initialize
     @books = []
     @labels = []
+    @authors = []
+    @games = []
   end
+
+  include GameModule
+  include BookModule
 
   def books
     puts "
            1. List all books
            2. List all labels
            3. Add new book
-            4. list all books by author
+           4. list all books by author
         "
     choice = gets.chomp
     case choice
@@ -96,25 +105,27 @@ class App
       'good'
     when 'n'
       'bad'
+
+  def games
+    puts "
+            1. add_game
+            2. list_games
+            3. list_all_game_authors
+            4. list_all_game_name
+            "
+    choice = gets.chomp
+    case choice
+    when '1'
+      add_game
+    when '2'
+      list_all_game
+    when '3'
+      list_game_by_author
+    when '4'
+      list_all_game_name
     else
       puts 'Invalid choice'
-      puts ''
-      puts 'Cover state Good (Y) OR Bad (N):'
-      state = gets.chomp
-      cover_state_choice(state)
-    end
-  end
-
-  def list_all_book_authors
-    book_data = './book/books.json'
-    @books = JSON.parse(File.read(book_data)) if File.exist?(book_data) && File.read(book_data) != ''
-    if @books.empty?
-      puts "\nBook list is empty"
-    else
-      @books.each_with_index do |book, _index|
-        book = JSON.parse(book, create_additions: true)
-        puts "#{book.item['author']} authored \"#{book.item['label']}\"."
-      end
+      Game
     end
   end
 end
