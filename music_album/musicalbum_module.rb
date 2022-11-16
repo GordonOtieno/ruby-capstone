@@ -10,10 +10,10 @@ module MusicAlbumModule
     last_name = gets.chomp.to_s
     puts 'Please Enter Album genre'
     album_name = gets.chomp.to_s
-    author= Author.new(first_name,last_name)
-    genre =  Genre.new(album_name)
+    author = Author.new(first_name, last_name)
+    genre = Genre.new(album_name)
     musicalbum = MusicAlbum.new(sportify, date_published)
-    puts "Music Album added successfully"
+    puts 'Music Album added successfully'
     json = JSON.generate(AlbumStruct.new({ album_name: album_name, sportify: sportify, date_published: date_published, first_name: author.first_name, last_name: author.last_name }))
     @album << json
     File.write('./music_album/musicalbum.json', @album)
@@ -31,7 +31,6 @@ module MusicAlbumModule
       end
     end
   end
-
 
   def list_musicalbums
     album_data = './music_album/musicalbum.json'
