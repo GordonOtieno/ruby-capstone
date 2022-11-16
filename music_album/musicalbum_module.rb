@@ -4,12 +4,17 @@ module MusicAlbumModule
     date_published = gets.chomp.to_s
     puts 'Please enter True or False for spotify'
     sportify = gets.chomp.to_s
-    puts 'Please Enter Music Album Name'
+    puts 'Please enter Authors First name'
+    first_name = gets.chomp.to_s
+    puts 'Please enter Authors Last name'
+    last_name = gets.chomp.to_s
+    puts 'Please Enter Album genre'
     album_name = gets.chomp.to_s
-    genre = new Genre(album_name)
+    author= Author.new(first_name,last_name)
+    genre =  Genre.new(album_name)
     musicalbum = MusicAlbum.new(sportify, date_published)
-    puts "Music Album #{musicalbum} added successfully"
-    json = JSON.generate(ItemStruct.new({ album_name: album_name, sportify: sportify, date_published: date_published }))
+    puts "Music Album added successfully"
+    json = JSON.generate(AlbumStruct.new({ album_name: album_name, sportify: sportify, date_published: date_published, first_name: author.first_name, last_name: author.last_name }))
     @album << json
     File.write('./music_album/musicalbum.json', @album)
   end
@@ -20,16 +25,13 @@ module MusicAlbumModule
     if @album.length.zero?
       puts 'You don\'t have any album available'
     else
-      @album.each_with_index do |s, _index|
+      @album.each_with_index do |s, index|
         s = JSON.parse(s, create_additions: true)
-        puts "#{index + 1}. #{s.item['genre']}"
+        puts "#{index + 1}. #{s.album['album_name']}"
       end
     end
   end
 
-  def add_musicalbum_to_genre(album, genre)
-    genre.add_item = album
-  end
 
   def list_musicalbums
     album_data = './music_album/musicalbum.json'
@@ -41,9 +43,8 @@ module MusicAlbumModule
       puts "\nList of all Music Albums"
       @album.each_with_index do |album, _index|
         album = JSON.parse(album, create_additions: true)
-        puts "Album Name: \"#{album.item["album_name"]}\", on_sportify: #{album.item["sportify"]}, Publish Date: #{album.item["date_published"]}"
+        puts "Album Name: \"#{album.album["album_name"]}\", on_sportify: #{album.album["sportify"]}, Publish Date: #{album.album["date_published"]}, First name: #{album.album["first_name"]}, Last Name: #{album.album["last_name"]}"
       end
     end
   end
 end
-

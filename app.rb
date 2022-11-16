@@ -1,14 +1,18 @@
 require_relative './book/book'
 require_relative './book/label'
 require_relative './game/author'
+require_relative './music_album/music_album'
+require_relative './music_album/genre'
 require_relative './game/game'
 require_relative './game/game_module'
 require_relative './book/book_module'
+require_relative './music_album/musicalbum_module'
 require 'json/add/struct'
 require 'json'
 
 ItemStruct = Struct.new(:item)
 GameStruct = Struct.new(:game)
+AlbumStruct = Struct.new(:album)
 
 class App
   def initialize
@@ -16,10 +20,13 @@ class App
     @labels = []
     @authors = []
     @games = []
+    @genre = []
+    @album = []
   end
 
   include GameModule
   include BookModule
+  include MusicAlbumModule
 
   def books
     puts "
@@ -44,67 +51,25 @@ class App
     end
   end
 
-  def add_book
-    puts 'Enter book publisher: '
-    publisher = gets.chomp.to_s
-    puts 'Enter book cover state(y: good, n: bad): '
-    cover_state = cover_state_choice(gets.chomp)
-    puts "Enter the author's name: "
-    author_name = gets.chomp.capitalize
-    puts 'Enter book publish date: '
-    publish_date = gets.chomp.to_i
-    puts 'Enter label title: '
-    title = gets.chomp.to_s
-    puts 'Enter label color: '
-    color = gets.chomp.to_s
-    author = Author.new(author_name, nil)
-    label = Label.new(title, color)
-    book = Book.new(publisher, cover_state, publish_date)
-    puts "book #{book} added"
-    json = JSON.generate(ItemStruct.new({ author: author.first_name, publisher: publisher,
-                                          cover_state: cover_state, publish_date: publish_date, label: label.title, color: label.color }))
-    @books << json
-    File.write('./book/books.json', @books)
-  end
-
-  def labels_list
-    label_data = './book/labels.json'
-    @books = JSON.parse(File.read(label_data)) if File.exist?(label_data) && File.read(label_data) != ''
-    if @books.length.zero?
-      puts 'You don\'t have any books available'
+  def album
+    puts "
+           1. List all music albums
+           2. List all genres
+           3. Add a music album
+        "
+    choice = gets.chomp
+    case choice
+    when '1'
+      list_musicalbums
+    when '2'
+      list_genre
+    when '3'
+      add_musicalbum
     else
-      @books.each_with_index do |s, index|
-        s = JSON.parse(s, create_additions: true)
-        puts "#{index + 1}. #{s.item['label']}"
-      end
+      puts 'Invalid choice'
+      album
     end
   end
-
-  def add_book_to_label(book, label)
-    label.add_item = book
-  end
-
-  def list_books
-    book_data = './book/books.json'
-    @books = JSON.parse(File.read(book_data)) if File.exist?(book_data) && File.read(book_data) != ''
-    if @books.empty?
-      puts "\nBook list is empty"
-    else
-      # Read file from ./book/books.json
-      puts "\nList of all Books"
-      @books.each_with_index do |book, _index|
-        book = JSON.parse(book, create_additions: true)
-        puts "Publisher: \"#{book.item['publisher']}\", Cover State: #{book.item['cover_state']}, Publish Date: \"#{book.item['publish_date']}\", Label: #{book.item['label']}, Color: #{book.item['color']}, Author: #{book.item['author']}"
-      end
-    end
-  end
-
-  def cover_state_choice(state)
-    case state
-    when 'y'
-      'good'
-    when 'n'
-      'bad'
 
   def games
     puts "
