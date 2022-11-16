@@ -19,8 +19,7 @@ class Item
   private :can_be_archived?
   def move_to_archive
     @archived = true if can_be_archived?
-  endclear
-  
+  end
 
   def genre=(genre)
     @genre = genre
@@ -42,9 +41,3 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 end
-
-item = Item.new(2000)
-
-item.add_author = 'John Doe'
-
-p item
