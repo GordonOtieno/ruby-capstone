@@ -1,14 +1,18 @@
 require_relative './book/book'
 require_relative './book/label'
 require_relative './game/author'
+require_relative './music_album/music_album'
+require_relative './music_album/genre'
 require_relative './game/game'
 require_relative './game/game_module'
 require_relative './book/book_module'
+require_relative './music_album/musicalbum_module'
 require 'json/add/struct'
 require 'json'
 
 ItemStruct = Struct.new(:item)
 GameStruct = Struct.new(:game)
+AlbumStruct = Struct.new(:album)
 
 class App
   def initialize
@@ -16,10 +20,13 @@ class App
     @labels = []
     @authors = []
     @games = []
+    @genre = []
+    @album = []
   end
 
   include GameModule
   include BookModule
+  include MusicAlbumModule
 
   def books
     puts "
@@ -41,6 +48,26 @@ class App
     else
       puts 'Invalid choice'
       books
+    end
+  end
+
+  def album
+    puts "
+           1. List all music albums
+           2. List all genres
+           3. Add a music album
+        "
+    choice = gets.chomp
+    case choice
+    when '1'
+      list_musicalbums
+    when '2'
+      list_genre
+    when '3'
+      add_musicalbum
+    else
+      puts 'Invalid choice'
+      album
     end
   end
 

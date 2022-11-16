@@ -7,7 +7,8 @@ def main_menu
   puts 'welcome to my App'
   puts '1. book'
   puts '2. Game'
-  puts '3. Exit'
+  puts '3. Music Album'
+  puts '4. Exit'
   puts 'Choose an option: '
 end
 
@@ -22,6 +23,8 @@ def run(choice)
   when 2
     @method.games
   when 3
+    @method.album
+  when 4
     puts 'Thank you for using my App'
     exit
   else
