@@ -10,11 +10,16 @@ module BookModule
     title = gets.chomp.to_s
     puts 'Enter label color: '
     color = gets.chomp.to_s
+    puts 'Enter author first name: '
+    first_name = gets.chomp.capitalize
+    puts 'Enter author last name: '
+    last_name = gets.chomp.capitalize
+    author = Author.new(first_name, last_name)
     label = Label.new(title, color)
     book = Book.new(publisher, cover_state, publish_date)
     puts "book #{book} added"
     json = JSON.generate(ItemStruct.new({ publisher: publisher, cover_state: cover_state,
-                                          publish_date: publish_date, label: label.title, color: label.color }))
+                                          publish_date: publish_date, label: label.title, color: label.color, author: author.first_name, author: author.last_name }))
     @books << json
     File.write('./book/books.json', @books)
   end
@@ -42,7 +47,7 @@ module BookModule
       puts "\nList of all Books"
       @books.each_with_index do |book, _index|
         book = JSON.parse(book, create_additions: true)
-        puts "Publisher: \"#{book.item["publisher"]}\", Cover State: #{book.item["cover_state"]}, Publish Date: \"#{book.item["publish_date"]}\", Label: #{book.item["label"]}, Color: #{book.item["color"]}"
+        puts "Publisher: \"#{book.item["publisher"]}\", Cover State: #{book.item["cover_state"]}, Publish Date: \"#{book.item["publish_date"]}\", Label: #{book.item["label"]}, Color: #{book.item["color"]}, First name: #{book.item["first_name"]}, Last Name: #{book.item["last_name"]}"
       end
     end
   end
