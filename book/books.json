@@ -1,1 +1,1 @@
-["{\"json_class\":\"ItemStruct\",\"v\":[{\"author\":\"Dasd\",\"publisher\":\"dasd\",\"cover_state\":\"good\",\"publish_date\":21323,\"label\":\"dasd\",\"color\":\"dasd\"}]}", "{\"json_class\":\"ItemStruct\",\"v\":[{\"author\":\"John\",\"publisher\":\"moran\",\"cover_state\":\"good\",\"publish_date\":45,\"label\":\"TS001\",\"color\":\"red\"}]}"]
+["{\"json_class\":\"ItemStruct\",\"v\":[{\"publisher\":\"me\",\"cover_state\":\"good\",\"publish_date\":2022,\"label\":\"hello world\",\"color\":\"red\",\"first_name\":\"Haadii\",\"last_name\":\"Ali\"}]}"]
