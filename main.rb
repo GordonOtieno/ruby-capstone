@@ -6,6 +6,7 @@ def main_menu
   # catalogs of things to do
   puts 'welcome to my App'
   puts '1. Add book'
+  puts '2. Add Game'
   puts '6. Exit'
   puts 'Choose an option: '
 end
@@ -19,14 +20,8 @@ def run(choice)
   when 1
     @method.books
   when 2
-    @method.add_label
+    @method.games
   when 3
-    @method.list_books
-  when 4
-    @method.list_labels
-  when 5
-    @method.list_books_by_label
-  when 6
     exit
   else
     puts 'Invalid option'
