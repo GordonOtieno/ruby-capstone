@@ -30,7 +30,7 @@ module BookModule
     if @books.length.zero?
       puts 'You don\'t have any books available'
     else
-        puts "total labels of books"
+      puts 'total labels of books'
       @books.each_with_index do |s, index|
         s = JSON.parse(s, create_additions: true)
         puts "#{index + 1}). #{s.item['label']}"
@@ -45,7 +45,7 @@ module BookModule
       puts "\nBook list is empty"
     else
       # Read file from ./book/books.json
-      puts "Total books:#{@books.count}" 
+      puts "Total books:#{@books.count}"
       @books.each_with_index do |book, index|
         book = JSON.parse(book, create_additions: true)
         puts "#{index + 1}). Publisher: \"#{book.item["publisher"]}\", Cover State: #{book.item["cover_state"]}, Publish Date: \"#{book.item["publish_date"]}\", Label: #{book.item["label"]}, Color: #{book.item["color"]}, First name: #{book.item["first_name"]}, Last Name: #{book.item["last_name"]}"
@@ -74,7 +74,7 @@ module BookModule
     if @books.empty?
       puts "\nBook list is empty"
     else
-        puts "Total authors:"
+      puts 'Total authors:'
       @books.each_with_index do |book, index|
         book = JSON.parse(book, create_additions: true)
         puts "#{index + 1}). #{book.item['first_name']} authored \"#{book.item['label']}\"."
