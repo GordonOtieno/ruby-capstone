@@ -8,7 +8,7 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 300
 Metrics/MethodLength:
   Max: 30
 Metrics/AbcSize:
@@ -47,6 +47,8 @@ Lint/Debugger:
   Enabled: false
 Lint/StructNewOverride:
   Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
 Style/HashEachMethods:
   Enabled: false
 Style/HashTransformKeys:
@@ -54,4 +56,6 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: false
 Style/SymbolProc:
+  Enabled: false
+Style/StringLiteralsInInterpolation:
   Enabled: false
