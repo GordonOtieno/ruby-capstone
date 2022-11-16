@@ -64,7 +64,7 @@ class App
     if @books.length.zero?
       puts 'You don\'t have any books available'
     else
-      @books.each_with_index do |s, _index|
+      @books.each_with_index do |s, index|
         s = JSON.parse(s, create_additions: true)
         puts "#{index + 1}. #{s.item['label']}"
       end
