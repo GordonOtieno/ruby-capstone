@@ -5,9 +5,9 @@ require_relative './app'
 def main_menu
   # catalogs of things to do
   puts 'welcome to my App'
-  puts '1. Add book'
-  puts '2. Add Game'
-  puts '6. Exit'
+  puts '1. book'
+  puts '2. Game'
+  puts '3. Exit'
   puts 'Choose an option: '
 end
 
@@ -22,6 +22,7 @@ def run(choice)
   when 2
     @method.games
   when 3
+    puts 'Thank you for using my App'
     exit
   else
     puts 'Invalid option'

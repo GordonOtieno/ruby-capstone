@@ -25,15 +25,11 @@ module BookModule
     if @books.length.zero?
       puts 'You don\'t have any books available'
     else
-      @books.each_with_index do |s, _index|
+      @books.each_with_index do |s, index|
         s = JSON.parse(s, create_additions: true)
         puts "#{index + 1}. #{s.item['label']}"
       end
     end
-  end
-
-  def add_book_to_label(book, label)
-    label.add_item = book
   end
 
   def list_books
@@ -63,6 +59,19 @@ module BookModule
       puts 'Cover state Good (Y) OR Bad (N):'
       state = gets.chomp
       cover_state_choice(state)
+    end
+  end
+
+  def list_all_book_authors
+    book_data = './book/books.json'
+    @books = JSON.parse(File.read(book_data)) if File.exist?(book_data) && File.read(book_data) != ''
+    if @books.empty?
+      puts "\nBook list is empty"
+    else
+      @books.each_with_index do |book, _index|
+        book = JSON.parse(book, create_additions: true)
+        puts "#{book.item['author']} authored \"#{book.item['label']}\"."
+      end
     end
   end
 end
