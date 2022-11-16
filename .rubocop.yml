@@ -55,6 +55,8 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
+Lint/DuplicateHashKey:
+  Enabled: false
 Style/SymbolProc:
   Enabled: false
 Style/StringLiteralsInInterpolation:
