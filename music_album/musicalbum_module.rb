@@ -42,7 +42,7 @@ module MusicAlbumModule
       puts "\nList of all Music Albums"
       @album.each_with_index do |album, _index|
         album = JSON.parse(album, create_additions: true)
-        puts "Album Name: \"#{album.album["album_name"]}\", on_sportify: #{album.album["sportify"]}, Publish Date: #{album.album["date_published"]}, First name: #{album.album["first_name"]}, Last Name: #{album.album["last_name"]}"
+        puts "Album Genre: \"#{album.album["album_name"]}\", on_sportify: #{album.album["sportify"]}, Publish Date: #{album.album["date_published"]}, First name: #{album.album["first_name"]}, Last Name: #{album.album["last_name"]}"
       end
     end
   end
