@@ -8,7 +8,7 @@ module GameModule
     first_name = gets.chomp.capitalize
     puts "Enter the author's last_name: "
     last_name = gets.chomp.capitalize
-    puts 'Enter last played date(YYYY-MM-DD): '
+    puts 'Enter last played year(YYYY): '
     last_played_at = gets.chomp.to_i
     puts 'Enter game publish year(YYYY): '
     publish_date = gets.chomp.to_i

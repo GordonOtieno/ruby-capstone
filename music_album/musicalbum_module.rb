@@ -25,6 +25,7 @@ module MusicAlbumModule
     if @album.length.zero?
       puts 'You don\'t have any album available'
     else
+      puts "total genre of album"
       @album.each_with_index do |s, index|
         s = JSON.parse(s, create_additions: true)
         puts "#{index + 1}. #{s.album['album_name']}"
