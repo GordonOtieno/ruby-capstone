@@ -4,7 +4,7 @@ module BookModule
     publisher = gets.chomp.to_s
     puts 'Enter book cover state(y: good, n: bad): '
     cover_state = cover_state_choice(gets.chomp)
-    puts 'Enter book publish date: '
+    puts 'Enter book publish year: '
     publish_date = gets.chomp.to_i
     puts 'Enter label title: '
     title = gets.chomp.to_s
