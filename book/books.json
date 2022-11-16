@@ -1,1 +1,2 @@
-["{\"json_class\":\"ItemStruct\",\"v\":[{\"publisher\":\"haadii\",\"cover_state\":\"good\",\"publish_date\":212,\"label\":\"my name\",\"color\":\"blue\"}]}", "{\"json_class\":\"ItemStruct\",\"v\":[{\"publisher\":\"dasd\",\"cover_state\":\"good\",\"publish_date\":232,\"label\":\"dasd\",\"color\":\"adsd\"}]}"]
+["{\"json_class\":\"ItemStruct\",\"v\":[{\"author\":\"Dasd\",\"publisher\":\"dasd\",\"cover_state\":\"good\",\"publish_date\":21323,\"label\":\"dasd\",\"color\":\"dasd\"}]}"]
+

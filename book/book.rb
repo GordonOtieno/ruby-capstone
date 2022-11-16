@@ -5,6 +5,7 @@ class Book < Item
 
   def initialize(publisher, cover_state, publish_date)
     super(publish_date)
+
     id = Random.rand(1...1000)
     @publisher = publisher
     @cover_state = cover_state
