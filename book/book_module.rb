@@ -46,7 +46,7 @@ module BookModule
       puts "\nList of all Books"
       @books.each_with_index do |book, _index|
         book = JSON.parse(book, create_additions: true)
-        puts "Publisher: \"#{book.item['publisher']}\", Cover State: #{book.item['cover_state']}, Publish Date: \"#{book.item['publish_date']}\", Label: #{book.item['label']}, Color: #{book.item['color']}"
+        puts "Publisher: \"#{book.item["publisher"]}\", Cover State: #{book.item["cover_state"]}, Publish Date: \"#{book.item["publish_date"]}\", Label: #{book.item["label"]}, Color: #{book.item["color"]}"
       end
     end
   end

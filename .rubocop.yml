@@ -47,6 +47,8 @@ Lint/Debugger:
   Enabled: false
 Lint/StructNewOverride:
   Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
 Style/HashEachMethods:
   Enabled: false
 Style/HashTransformKeys:
@@ -54,4 +56,6 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: false
 Style/SymbolProc:
+  Enabled: false
+Style/StringLiteralsInInterpolation:
   Enabled: false
