@@ -27,7 +27,7 @@ To get a local copy up and running follow these simple example steps.
 
 In your terminal, navigate to your current directory and clone this repo
 
-`https://github.com/GordonOtieno/ruby-capstone.git`
+`git@github.com:Haadiiii/my-catalogs-of-things.git`
 
 Locate the directory in your file explorer
 
